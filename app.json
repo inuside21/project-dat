@@ -1,0 +1,61 @@
+{
+  "expo": {
+    "name": "Develop Agricultural Technology",
+    "slug": "DATAPP",
+    "version": "9.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/agri-icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/agri-splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 6000,
+      "url": "https://u.expo.dev/75082a98-f16f-4b85-b363-cd8023404ee8"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.datapp.datapp",
+      "buildNumber": "9.0.0",
+      "config": {
+        "usesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/agri-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.datapp.datapp",
+      "permissions": [
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "WRITE_SETTINGS",
+        "READ_PHONE_STATE",
+        "SYSTEM_ALERT_WINDOW",
+        "RECEIVE_BOOT_COMPLETED",
+        "READ_INTERNAL_STORAGE",
+        "INTERNET",
+        "ACCESS_NETWORK_STATE",
+        "ACCESS_WIFI_STATE"
+      ],
+      "versionCode": 9
+    },
+    "web": {
+      "favicon": "./assets/agri-icon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "75082a98-f16f-4b85-b363-cd8023404ee8"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    }
+  }
+}
