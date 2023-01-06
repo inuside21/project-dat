@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useSyncExternalStore } from 'react';
 import { StyleSheet, ActivityIndicator, Image, ImageBackground, Text, TouchableWithoutFeedback, View, KeyboardAvoidingView, Platform, Keyboard, Pressable, ScrollView, FlatList, Dimensions } from 'react-native';
-import { Surface, TextInput, Button } from 'react-native-paper';
+import { Surface, TextInput, Button, Checkbox, } from 'react-native-paper';
 import validator from 'validator';
 import * as ImagePicker from 'expo-image-picker';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -33,6 +33,9 @@ export default function Message({ navigation, route }) {
   // transaction
   const [transactionData, setTransactionData] = useState({});
   const [targetUser, setTargetUser] = useState({});
+
+  // checkbox
+  const [isCheck, setIsCheck] = useState(false);
   
 
   // Function
@@ -136,6 +139,13 @@ export default function Message({ navigation, route }) {
       return;
     }
 
+    // checkbox
+    if (!isCheck)
+    {
+      ConfigAlert("Error", "Please check the Terms and Condition");
+      return;
+    }
+
     // set
     setFormSubmit(true);
 
@@ -200,7 +210,7 @@ export default function Message({ navigation, route }) {
                       <Image source={{ uri: ConfigConnection.image + productData.img.img_name }} style={{ width: 100, height: 100 }} />
                     </View>
                     <View style={{ flex: 2 }}>
-                      <View style={{ flexDirection: "row", marginVertical: 10 }}>
+                      <View style={{ flexDirection: "row", marginVertical: 5 }}>
                         <View style={{ flex: 2, marginHorizontal: 10 }}>
                           <Text style={{ color: ConfigColors.SECONDARYCOLOR }}>Name</Text>
                         </View>
@@ -209,7 +219,7 @@ export default function Message({ navigation, route }) {
                         </View>
                       </View>
                     
-                      <View style={{ flexDirection: "row", marginVertical: 10 }}>
+                      <View style={{ flexDirection: "row", marginVertical: 5 }}>
                         <View style={{ flex: 2, marginHorizontal: 10 }}>
                           <Text style={{ color: ConfigColors.SECONDARYCOLOR }}>Location</Text>
                         </View>
@@ -219,7 +229,7 @@ export default function Message({ navigation, route }) {
                       </View>
 
                       { productData.trading_qty &&
-                        <View style={{ flexDirection: "row", marginVertical: 10 }}>
+                        <View style={{ flexDirection: "row", marginVertical: 5 }}>
                           <View style={{ flex: 2, marginHorizontal: 10 }}>
                             <Text style={{ color: ConfigColors.SECONDARYCOLOR }}>Stock</Text>
                           </View>
@@ -230,7 +240,7 @@ export default function Message({ navigation, route }) {
                       }
 
                       { productData.trading_price &&
-                        <View style={{ flexDirection: "row", marginVertical: 10 }}>
+                        <View style={{ flexDirection: "row", marginVertical: 5 }}>
                           <View style={{ flex: 2, marginHorizontal: 10 }}>
                             <Text style={{ color: ConfigColors.SECONDARYCOLOR }}>Price</Text>
                           </View>
@@ -244,7 +254,7 @@ export default function Message({ navigation, route }) {
                           <>
                               { transactionData.trans_status == "pending" &&
                                   <>
-                                    <View style={{ flexDirection: "row", marginVertical: 10 }}>
+                                    <View style={{ flexDirection: "row", marginVertical: 5 }}>
                                       <View style={{ flex: 2, marginHorizontal: 10 }}>
                                         <Text style={{ color: ConfigColors.SECONDARYCOLOR }}>Product Quantity</Text>
                                       </View>
@@ -262,6 +272,9 @@ export default function Message({ navigation, route }) {
                                           onChangeText={t => setProductQty(t)}  
                                         />
                                       </View>
+                                    </View>
+                                    <View style={{ marginTop: 5, alignItems: "center" }}>
+                                      <Checkbox.Item label="I accept the Terms and Condition" status={isCheck ? "checked" : "unchecked"} labelStyle={{ fontSize: 10 }} position="leading" onPress={() => setIsCheck(!isCheck)}/>
                                     </View>
                                     <View style={{ flex: 1, marginHorizontal: 50 }}>
                                       <Button mode="contained" buttonColor={ConfigColors.GREENCOLOR} contentStyle={{ }} labelStyle={{ fontSize: 12 }} style={styles.formButton} onPress={onPressSubmit} loading={formSubmit}>

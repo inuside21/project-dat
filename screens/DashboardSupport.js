@@ -46,13 +46,13 @@ export default function DashboardSupport({ navigation, route }) {
                 <View style={{ flex: 5, justifyContent: "flex-start", alignItems: "center", flexDirection: "row" }}>
                   <View style={{ flex: 1, alignItems: "center" }}>
                     <Pressable onPress={() => navigation.navigate('ViewSupport', { data: userData, sdata: "Farm Driver", smode: 43 })}>
-                      <Image source={require('../assets/others/dd6.png')} style={{ width: 120, height: 120 }} />
+                      <Image source={require('../assets/others/dd10.png')} style={{ width: 120, height: 120, resizeMode: "contain" }} />
                     </Pressable>
                   </View>
 
                   <View style={{ flex: 1, alignItems: "center" }}>
                     <Pressable onPress={() => navigation.navigate('ViewSupport', { data: userData, sdata: "Harvester", smode: 43 })}>
-                      <Image source={require('../assets/others/dd6.png')} style={{ width: 120, height: 120 }} />
+                      <Image source={require('../assets/others/dd11.png')} style={{ width: 120, height: 120, resizeMode: "contain" }} />
                     </Pressable>
                   </View>
                 </View>
@@ -60,13 +60,13 @@ export default function DashboardSupport({ navigation, route }) {
                 <View style={{ flex: 5, justifyContent: "center", alignItems: "center", flexDirection: "row" }}>
                   <View style={{ flex: 1, alignItems: "center" }}>
                     <Pressable onPress={() => navigation.navigate('ViewSupport', { data: userData, sdata: "Pesticide Sprayer", smode: 43 })}>
-                      <Image source={require('../assets/others/dd6.png')} style={{ width: 120, height: 120 }} />
+                      <Image source={require('../assets/others/dd12.png')} style={{ width: 120, height: 120, resizeMode: "contain" }} />
                     </Pressable>
                   </View>
 
                   <View style={{ flex: 1, alignItems: "center" }}>
                     <Pressable onPress={() => navigation.navigate('ViewSupport', { data: userData, sdata: "Agricultural Machinery Mechanics", smode: 43 })}>
-                      <Image source={require('../assets/others/dd6.png')} style={{ width: 120, height: 120 }} />
+                      <Image source={require('../assets/others/dd13.png')} style={{ width: 120, height: 120, resizeMode: "contain" }} />
                     </Pressable>
                   </View>
                 </View>
