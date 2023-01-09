@@ -2,7 +2,7 @@
   "expo": {
     "name": "Develop Agricultural Technology",
     "slug": "DATAPP",
-    "version": "9.0.0",
+    "version": "10.0.0",
     "orientation": "portrait",
     "icon": "./assets/agri-icon.png",
     "userInterfaceStyle": "light",
@@ -21,7 +21,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.datapp.datapp",
-      "buildNumber": "9.0.0",
+      "buildNumber": "10.0.0",
       "config": {
         "usesNonExemptEncryption": false
       }
@@ -44,7 +44,7 @@
         "ACCESS_NETWORK_STATE",
         "ACCESS_WIFI_STATE"
       ],
-      "versionCode": 9
+      "versionCode": 10
     },
     "web": {
       "favicon": "./assets/agri-icon.png"
