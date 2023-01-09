@@ -1,7 +1,15 @@
 <?php
 
     // Database
-    include("../config/config.php");
+    $connection = mysqli_connect("localhost","u489199370_root","YOUR_PASSWORD_HERE_JUSKOPO","u489199370_datdb");
+
+    // Date
+    date_default_timezone_set("Asia/Manila");
+    $date = new DateTime();
+    $dateResult = $date->format('Y-m-d H:i:s');
+    $dateOnlyResult = $date->format('Y-m-d');
+    $dateOnlyResultYearMonth = $date->format('Y-m');
+    $dateOnlyResultYear = $date->format('Y');
 
     // check
     if (!isset($_GET['mode'])) {
