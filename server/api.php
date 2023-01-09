@@ -1429,7 +1429,7 @@
         $messageData = array();
 
         // transaction
-        $sql="select * from transaction_tbl where trans_seller = '" . $resData->uid . "' or trans_buyer = '" . $resData->uid . "'"; 
+        $sql="select * from transaction_tbl where trans_seller = '" . $resData->uid . "' or trans_buyer = '" . $resData->uid . "' order by trans_lastupdate desc"; 
         $rs=mysqli_query($connection,$sql);
         while ($rowstrans = mysqli_fetch_object($rs))
         {
@@ -1594,6 +1594,9 @@
     if ($_GET['mode'] == '72')
     {
         $resData = JSONGet(); 
+
+        // set
+        $lastupdate = strtotime($dateResult);
     
         // send
         {
@@ -1617,6 +1620,16 @@
             $rs = mysqli_query($connection, $sql);
         }
 
+        // update
+        {
+            $sql = "update transaction_tbl set
+                        trans_lastupdate = '" . strval($lastupdate) . "'
+                    where 
+                        id = '" . $resData->ftxn . "'
+            ";
+            $rs = mysqli_query($connection, $sql);
+        }
+
         // return
         JSONSet("ok", "", "");
     }
@@ -1629,6 +1642,7 @@
 
         // set
         $messageData = new stdClass();
+        $lastupdate = strtotime($dateResult);
 
         $sql="insert into transaction_tbl
                 (
@@ -1636,7 +1650,8 @@
                     trans_item,
                     trans_seller,
                     trans_buyer,
-                    trans_date
+                    trans_date,
+                    trans_lastupdate
                 )
             values
                 (
@@ -1644,7 +1659,8 @@
                     '" . $resData->tiid . "',
                     '" . $resData->tseller . "',
                     '" . $resData->tbuyer . "',
-                    '" . $dateOnlyResult . "'
+                    '" . $dateOnlyResult . "',
+                    '" . strval($lastupdate) . "'
                 )
         "; 
         $rs=mysqli_query($connection,$sql);
@@ -2040,6 +2056,9 @@
     {
         $resData = JSONGet();
 
+        // set
+        $lastupdate = strtotime($dateResult);
+
         // check
         {
             if (!is_numeric($resData->pqty) || (float)$resData->pqty <= 0)
@@ -2070,7 +2089,8 @@
         // transaction
         $sql = "update transaction_tbl set
                     trans_status = 'deliver',
-                    trans_qty = trans_qty + '" . $resData->pqty . "'
+                    trans_qty = trans_qty + '" . $resData->pqty . "',
+                    trans_lastupdate = '" . strval($lastupdate) . "'
                 where id = '" . $resData->tid . "'
         ";
         $rsgetacc=mysqli_query($connection,$sql);
@@ -2085,6 +2105,9 @@
     {
         $resData = JSONGet();
 
+        // set
+        $lastupdate = strtotime($dateResult);
+
         // check
         {
             
@@ -2092,7 +2115,8 @@
 
         // transaction
         $sql = "update transaction_tbl set
-                    trans_status = 'complete'
+                    trans_status = 'complete',
+                    trans_lastupdate = '" . strval($lastupdate) . "'
                 where id = '" . $resData->tid . "'
         ";
         $rsgetacc=mysqli_query($connection,$sql);
