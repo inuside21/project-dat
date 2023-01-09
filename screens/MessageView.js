@@ -27,7 +27,11 @@ export default function MessageView({ navigation, route }) {
   {
     // Load
     useEffect(() => {
-      LoadMessageList();
+      const start = navigation.addListener('focus', () => {
+        LoadMessageList();
+      });
+
+      return start;
     }, [navigation])
   }
 
