@@ -18,6 +18,7 @@ import Login from './screens/Login';
 import Reset from './screens/Reset';
 import Email from './screens/Email';
 import Terms from './screens/Terms';
+import TermsView from './screens/TermsView';
 import Policy from './screens/Policy';
 import Register from './screens/Register';
 import Dashboard from './screens/Dashboard';
@@ -82,6 +83,7 @@ export default function App() {
           <Stack.Screen name="Reset" component={Reset} options={{ title: "Reset", headerShown: false }} />
           <Stack.Screen name="Email" component={Email} options={{ title: "Email", headerShown: false }} />
           <Stack.Screen name="Terms" component={Terms} options={{ title: "Terms", headerShown: false }} />
+          <Stack.Screen name="TermsView" component={TermsView} options={{ title: "Terms View", headerShown: false }} />
           <Stack.Screen name="Policy" component={Policy} options={{ title: "Policy", headerShown: false }} />
           <Stack.Screen name="Register" component={Register} options={{ title: "Register", headerShown: false }} />
           <Stack.Screen name="Dashboard" component={Dashboard} options={{ title: "Dashboard", headerShown: false }} />

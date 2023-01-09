@@ -273,8 +273,9 @@ export default function Message({ navigation, route }) {
                                         />
                                       </View>
                                     </View>
-                                    <View style={{ marginTop: 5, alignItems: "center" }}>
-                                      <Checkbox.Item label="I accept the Terms and Condition" status={isCheck ? "checked" : "unchecked"} labelStyle={{ fontSize: 10 }} position="leading" onPress={() => setIsCheck(!isCheck)}/>
+                                    <View style={{ marginTop: 5, justifyContent: "center", alignItems: "center", flexDirection: "row" }}>
+                                      <Checkbox.Item label="I accept the " status={isCheck ? "checked" : "unchecked"} labelStyle={{ fontSize: 10 }} position="leading" onPress={() => setIsCheck(!isCheck)}/>
+                                      <Text style={{ fontSize: 10, marginLeft: -15, color: "#2CCC74" }} onPress={() => navigation.navigate("Terms") }>Terms and Condition</Text>
                                     </View>
                                     <View style={{ flex: 1, marginHorizontal: 50 }}>
                                       <Button mode="contained" buttonColor={ConfigColors.GREENCOLOR} contentStyle={{ }} labelStyle={{ fontSize: 12 }} style={styles.formButton} onPress={onPressSubmit} loading={formSubmit}>
@@ -323,6 +324,13 @@ export default function Message({ navigation, route }) {
 
                       { productData.trading_qty && transactionData.trans_seller != userData.id &&
                           <>
+                              { transactionData.trans_status == "pending" &&
+                                  <>
+                                    <View style={{ marginTop: 10, justifyContent: "center", alignItems: "center", flexDirection: "row" }}>
+                                      <Text style={{ fontSize: 10, color: "#2CCC74" }} onPress={() => navigation.navigate("Terms") }><Text style={{ color: "#000" }}>I accept the </Text>Terms and Condition</Text>
+                                    </View>
+                                  </>
+                              }
                               { transactionData.trans_status == "deliver" &&
                                   <>
                                     <View style={{ flexDirection: "row", marginVertical: 10 }}>
